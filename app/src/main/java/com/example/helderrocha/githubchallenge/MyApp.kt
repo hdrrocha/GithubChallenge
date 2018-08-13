@@ -1,11 +1,11 @@
-package com.example.helderrocha.testeparaserinvolvido
-
+package com.example.helderrocha.githubchallenge
 import android.app.Activity
 import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
+
 
 class MyApp: Application(), HasActivityInjector {
 

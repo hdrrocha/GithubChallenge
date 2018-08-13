@@ -16,11 +16,11 @@ import com.example.helderrocha.testeparaserinvolvido.data.DatabaseHelper
 import dagger.Lazy
 import javax.inject.Inject
 
-class ViewModelFactory<VM : ViewModel> @Inject constructor(private val viewModel: Lazy<VM>) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return viewModel.get() as T
-    }
-}
+//class ViewModelFactory<VM : ViewModel> @Inject constructor(private val viewModel: Lazy<VM>) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        return viewModel.get() as T
+//    }
+//}
 class RepositoryViewModel @Inject constructor(val api: ApiClient, private val schedulers: SchedulerProvider) : ViewModel() {
     private val repositoryData = RepositoryLiveData(api, schedulers)
     fun getData(): LiveData<List<Repository>> = repositoryData

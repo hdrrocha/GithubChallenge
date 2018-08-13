@@ -1,8 +1,9 @@
-package com.example.helderrocha.testeparaserinvolvido
+package com.example.helderrocha.githubchallenge
 
 import android.content.Context
 import com.example.helderrocha.githubchallenge.api.NetworkModule
 import com.example.helderrocha.githubchallenge.repository.RepositoriosActivity
+import com.example.helderrocha.testeparaserinvolvido.SchedulerModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -12,29 +13,28 @@ import dagger.android.ContributesAndroidInjector
 import javax.inject.Singleton
 
 @Module(includes = [
-  NetworkModule::class,
-  SchedulerModule::class
+    NetworkModule::class,
+    SchedulerModule::class
 ])
 class AppModule
 
 @Module
 abstract class AndroidInjectorsModule {
-  @ContributesAndroidInjector
-  abstract fun repositoriosActivity(): RepositoriosActivity
-//  @ContributesAndroidInjector
-//  abstract fun detailsActivity(): DetailsActivity
+    @ContributesAndroidInjector
+    abstract fun repositoriosActivity(): RepositoriosActivity
+
 }
 
 @Singleton
 @Component(modules = arrayOf(
-    AndroidInjectionModule::class,
-    AppModule::class,
-    AndroidInjectorsModule::class
+        AndroidInjectionModule::class,
+        AppModule::class,
+        AndroidInjectorsModule::class
 ))
 interface AppComponent : AndroidInjector<MyApp> {
-  @Component.Builder
-  abstract class Builder : AndroidInjector.Builder<MyApp>() {
-    @BindsInstance
-    abstract fun appContext(appContext: Context): Builder
-  }
+    @Component.Builder
+    abstract class Builder : AndroidInjector.Builder<MyApp>() {
+        @BindsInstance
+        abstract fun appContext(appContext: Context): Builder
+    }
 }
