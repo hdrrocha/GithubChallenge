@@ -1,8 +1,8 @@
 package com.example.helderrocha.testeparaserinvolvido.data
 
 import com.example.helderrocha.githubchallenge.model.Genre
+import com.example.helderrocha.githubchallenge.model.Items
 import com.example.helderrocha.githubchallenge.model.Movie
-import com.example.helderrocha.githubchallenge.model.Repository
 
 
 object Cache {
@@ -13,8 +13,8 @@ object Cache {
         this.genres = genres
     }
 
-    var repositories = listOf<Repository>()
-    fun cacheRepositories(repositories: List<Repository>) {
+    var repositories = listOf<Items>()
+    fun cacheRepositories(repositories: List<Items>) {
         this.repositories = repositories
     }
 

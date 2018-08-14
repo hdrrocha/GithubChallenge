@@ -20,10 +20,7 @@ interface GitApi {
     }
 
     @GET("search/repositories?q=language:Java&sort=stars&page=1")
-    fun repositories(
-//            @Query("api_key") apiKey: String,
-//            @Query("language") language: String
-    ): Single<RepositoryResponse>
+    fun repositories(): Single<RepositoryResponse>
 
 //    @GET("movie/upcoming")
 //    fun upcomingMovies(

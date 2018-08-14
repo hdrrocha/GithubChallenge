@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ApiClient @Inject constructor(
         private val gitApi: GitApi
 ) {
-    fun repositorys(): Single<RepositoryResponse> {
+    fun repositories(): Single<RepositoryResponse> {
         return gitApi.repositories()
     }
 

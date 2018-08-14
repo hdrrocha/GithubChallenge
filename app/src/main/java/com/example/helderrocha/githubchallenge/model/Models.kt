@@ -33,13 +33,14 @@ data class Movie(
         @Json(name = "release_date") val releaseDate: String?
 )
 
-data class RepositoryResponse(val repositories: List<Repository>)
-data class  Repository(
-        val id: Int,
-        val node_id: String,
-        val name: String?,
-        val full_name: String?
-//        val owner: List<Owner>?
+data class RepositoryResponse(
+        @Json(name = "items") val items: List<Items>?,
+        @Json(name = "total_count") val totalCount: Int?
+)
+
+data class  Items(
+        @Json(name = "name") val name: String,
+        @Json(name = "id") val id: Int?
 )
 
 //data class  Owner(
