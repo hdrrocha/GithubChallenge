@@ -1,6 +1,7 @@
 package com.example.helderrocha.githubchallenge.api
 
 import com.example.helderrocha.githubchallenge.model.RepositoryResponse
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,13 +23,10 @@ interface GitApi {
     @GET("search/repositories?q=language:Java&sort=stars&page=1")
     fun repositories(): Single<RepositoryResponse>
 
-//    @GET("movie/upcoming")
-//    fun upcomingMovies(
-//            @Query("api_key") apiKey: String,
-//            @Query("language") language: String,
-//            @Query("page") page: Long,
-//            @Query("region") region: String
-//    ): Observable<UpcomingMoviesResponse>
+//    @GET("search/repositories?q=language:Java&sort=stars&page={page}")
+//    fun repositories(
+//            @Query("page") page: String
+//    ): Single<RepositoryResponse>
 //
 //    @GET("movie/{id}")
 //    fun movie(
