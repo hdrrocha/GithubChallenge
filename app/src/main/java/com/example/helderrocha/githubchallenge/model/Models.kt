@@ -7,7 +7,7 @@ import android.widget.ImageView
 import com.squareup.moshi.Json
 import android.databinding.ObservableField
 import android.graphics.drawable.Drawable
-import com.example.helderrocha.testeparaserinvolvido.util.MovieImageUrlBuilder
+//import com.example.helderrocha.testeparaserinvolvido.util.MovieImageUrlBuilder
 
 
 
@@ -39,9 +39,20 @@ data class RepositoryResponse(
 )
 
 data class  Items(
+        @Json(name = "id") val id: Int?,
         @Json(name = "name") val name: String,
-        @Json(name = "id") val id: Int?
+        @Json(name = "description") val description: String,
+        @Json(name = "forks") val forks: String,
+        @Json(name = "stargazers_count") val stargazers_count: String,
+        @Json(name = "owner") val owner: Owner
 )
+data class  Owner(
+        @Json(name = "id") val id: Int?,
+        @Json(name = "login") val login: String,
+        @Json(name = "avatar_url") val avatar_url: String
+)
+
+
 
 //data class  Owner(
 //        val id: Int,
