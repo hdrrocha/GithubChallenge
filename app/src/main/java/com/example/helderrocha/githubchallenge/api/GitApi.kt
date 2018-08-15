@@ -1,5 +1,6 @@
 package com.example.helderrocha.githubchallenge.api
 
+import com.example.helderrocha.githubchallenge.model.PullRequestResponse
 import com.example.helderrocha.githubchallenge.model.RepositoryResponse
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -26,6 +27,10 @@ interface GitApi {
 
     @GET("search/repositories?q=language:Java&sort=stars&")
     fun repositoriesscroll(@Query("page") page: String): Observable<RepositoryResponse>
+
+
+    @GET("repos/{criador}/{repositorio}/pulls")
+    fun pullRequest(@Path("criador") criador: String, @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
 //
 //    @GET("movie/{id}")
 //    fun movie(

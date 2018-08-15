@@ -2,6 +2,7 @@ package com.example.helderrocha.githubchallenge.repository
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +16,7 @@ import android.widget.Toast
 
 import com.example.helderrocha.githubchallenge.R
 import com.example.helderrocha.githubchallenge.model.Items
+import com.example.helderrocha.githubchallenge.pull_requests.PullRequestsActivity
 import com.example.helderrocha.githubchallenge.repository.adapter.ItemAdapter
 
 import com.example.helderrocha.githubchallenge.view_model.RepositoryViewModel
@@ -98,8 +100,10 @@ class RepositoriosActivity : AppCompatActivity() {
         })
     }
     private fun partItemClicked(item : Items) {
-//        val showDetailActivityIntent = Intent(this, DetailsActivity::class.java)
-//        showDetailActivityIntent.putExtra("movie_selected", movie.id)
-//        startApartItemClickedctivity(showDetailActivityIntent)
+//        criador: String, repositorio: String)
+        val showDetailActivityIntent = Intent(this, PullRequestsActivity::class.java)
+        showDetailActivityIntent.putExtra("criador", item.owner.login)
+        showDetailActivityIntent.putExtra("repositorio", item.full_name)
+        startActivity(showDetailActivityIntent)
     }
 }

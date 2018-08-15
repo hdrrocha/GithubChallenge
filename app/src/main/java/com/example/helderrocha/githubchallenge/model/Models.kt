@@ -11,6 +11,7 @@ data class  Items(
         @Json(name = "name") val name: String,
         @Json(name = "description") val description: String,
         @Json(name = "forks") val forks: String,
+        @Json(name = "full_name") val full_name: String,
         @Json(name = "stargazers_count") val stargazers_count: String,
         @Json(name = "owner") val owner: Owner
 )
@@ -20,6 +21,23 @@ data class  Owner(
         @Json(name = "avatar_url") val avatar_url: String
 )
 
+data class PullRequestResponse(
+       val pullRequest: List<PullRequest>? = null
+)
+
+data class PullRequest(
+        @Json(name = "id") val id: Int?,
+        @Json(name = "title") val title: String,
+        @Json(name = "user") val user: User,
+        @Json(name = "body") val body:  String
+
+)
+
+data class  User(
+        @Json(name = "id") val id: Int?,
+        @Json(name = "login") val login: String,
+        @Json(name = "avatar_url") val avatar_url: String
+)
 
 
 //data class  Owner(

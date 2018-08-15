@@ -1,4 +1,5 @@
 package com.example.helderrocha.githubchallenge.api
+import com.example.helderrocha.githubchallenge.model.PullRequestResponse
 import com.example.helderrocha.githubchallenge.model.RepositoryResponse
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -16,6 +17,11 @@ class ApiClient @Inject constructor(
     fun repositoriesscroll(page: String): Observable<RepositoryResponse> {
         return gitApi.repositoriesscroll(page)
     }
+    fun pullRequest(criador: String, repositorio: String ): Observable<PullRequestResponse> {
+        return gitApi.pullRequest(criador, repositorio)
+    }
+
+    //pullRequest(@Path("criador") criador: String, @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
 //    fun upcomingMovies(apiKey: String,
 //                       language: String,
 //                       page: Long,
