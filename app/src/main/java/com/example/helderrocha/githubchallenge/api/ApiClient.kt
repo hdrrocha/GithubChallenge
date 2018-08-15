@@ -13,7 +13,9 @@ class ApiClient @Inject constructor(
     fun repositories(): Single<RepositoryResponse> {
         return gitApi.repositories()
     }
-
+    fun repositoriesscroll(page: String): Observable<RepositoryResponse> {
+        return gitApi.repositoriesscroll(page)
+    }
 //    fun upcomingMovies(apiKey: String,
 //                       language: String,
 //                       page: Long,

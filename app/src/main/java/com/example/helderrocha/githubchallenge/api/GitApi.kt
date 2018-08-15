@@ -4,6 +4,7 @@ import com.example.helderrocha.githubchallenge.model.RepositoryResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -23,10 +24,8 @@ interface GitApi {
     @GET("search/repositories?q=language:Java&sort=stars&page=1")
     fun repositories(): Single<RepositoryResponse>
 
-//    @GET("search/repositories?q=language:Java&sort=stars&page={page}")
-//    fun repositories(
-//            @Query("page") page: String
-//    ): Single<RepositoryResponse>
+    @GET("search/repositories?q=language:Java&sort=stars&")
+    fun repositoriesscroll(@Query("page") page: String): Observable<RepositoryResponse>
 //
 //    @GET("movie/{id}")
 //    fun movie(
