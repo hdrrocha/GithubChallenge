@@ -3,10 +3,9 @@ package com.example.helderrocha.githubchallenge.view_model
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import com.example.helderrocha.githubchallenge.api.ApiClient
-import com.example.helderrocha.githubchallenge.model.Items
 import com.example.helderrocha.githubchallenge.model.PullRequest
-import com.example.helderrocha.githubchallenge.model.PullRequestResponse
 import com.example.helderrocha.testeparaserinvolvido.SchedulerProvider
 import javax.inject.Inject
 

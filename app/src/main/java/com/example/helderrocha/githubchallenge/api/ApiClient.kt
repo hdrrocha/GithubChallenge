@@ -17,7 +17,7 @@ class ApiClient @Inject constructor(
     fun repositoriesscroll(page: String): Observable<RepositoryResponse> {
         return gitApi.repositoriesscroll(page)
     }
-    fun pullRequest(criador: String, repositorio: String ): Observable<PullRequestResponse> {
+    fun pullRequest(criador: String, repositorio: String): Observable<PullRequestResponse> {
         return gitApi.pullRequest(criador, repositorio)
     }
 

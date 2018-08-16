@@ -2,6 +2,7 @@ package com.example.helderrocha.githubchallenge
 
 import android.content.Context
 import com.example.helderrocha.githubchallenge.api.NetworkModule
+import com.example.helderrocha.githubchallenge.pull_requests.PullRequestsActivity
 import com.example.helderrocha.githubchallenge.repository.RepositoriosActivity
 import com.example.helderrocha.testeparaserinvolvido.SchedulerModule
 import dagger.BindsInstance
@@ -22,6 +23,8 @@ class AppModule
 abstract class AndroidInjectorsModule {
     @ContributesAndroidInjector
     abstract fun repositoriosActivity(): RepositoriosActivity
+    @ContributesAndroidInjector
+    abstract fun pullRequestsActivity(): PullRequestsActivity
 
 }
 

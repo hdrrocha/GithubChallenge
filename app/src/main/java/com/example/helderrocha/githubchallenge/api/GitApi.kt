@@ -29,8 +29,20 @@ interface GitApi {
     fun repositoriesscroll(@Query("page") page: String): Observable<RepositoryResponse>
 
 
+//    @GET("repos/{criador}/{repositorio}/pulls")
+//    fun pullRequest(
+//            @Path("criador") criador: String,
+//            @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
+
+
     @GET("repos/{criador}/{repositorio}/pulls")
-    fun pullRequest(@Path("criador") criador: String, @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
+    fun pullRequest(
+            @Path("criador") criador: String,
+            @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
+
+//    @GET("/repos/{owner}/{repo}/contributors")
+//    fun contributors(@Path("owner") owner: String,
+//                     @Path("repo") repo: String): Call<MutableList<Contributor>>
 //
 //    @GET("movie/{id}")
 //    fun movie(

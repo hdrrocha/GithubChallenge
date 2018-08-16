@@ -22,7 +22,7 @@ data class  Owner(
 )
 
 data class PullRequestResponse(
-       val pullRequest: List<PullRequest>? = null
+            val pullRequest: List<PullRequest>?
 )
 
 data class PullRequest(
