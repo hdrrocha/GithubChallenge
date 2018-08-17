@@ -14,12 +14,12 @@ class PullRequestsViewModel @Inject constructor(val api: ApiClient, private val 
     var _pullRequests = MutableLiveData<List<PullRequest>>()
     val pullRequests: LiveData<List<PullRequest>> = _pullRequests
 
-    fun getPullRequest(criador: String, repositorio: String) {
-        api.pullRequest(criador, repositorio)
+    fun getPullRequest(repositorio: String) {
+        api.pullRequest(repositorio+"/pulls")
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.mainThread())
                 .subscribe({
-                    _pullRequests.value = it.pullRequest
+                    _pullRequests.value = it
                 }, {
                     _pullRequests.value = listOf()
                 })

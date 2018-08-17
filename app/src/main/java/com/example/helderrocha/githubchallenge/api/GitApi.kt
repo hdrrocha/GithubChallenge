@@ -1,5 +1,6 @@
 package com.example.helderrocha.githubchallenge.api
 
+import com.example.helderrocha.githubchallenge.model.PullRequest
 import com.example.helderrocha.githubchallenge.model.PullRequestResponse
 import com.example.helderrocha.githubchallenge.model.RepositoryResponse
 import io.reactivex.Observable
@@ -35,10 +36,9 @@ interface GitApi {
 //            @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
 
 
-    @GET("repos/{criador}/{repositorio}/pulls")
+    @GET("repos/{repositorio}")
     fun pullRequest(
-            @Path("criador") criador: String,
-            @Path("repositorio") repositorio: String): Observable<PullRequestResponse>
+            @Path("repositorio") repositorio: String):  Observable<List<PullRequest>>
 
 //    @GET("/repos/{owner}/{repo}/contributors")
 //    fun contributors(@Path("owner") owner: String,

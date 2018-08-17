@@ -41,10 +41,11 @@ class PullRequestsActivity : AppCompatActivity() {
         val data: Bundle = intent.extras
 
         var criador = data.getSerializable("criador")
+        Log.i("criador" , criador.toString())
         var repositorio = data.getSerializable("repositorio")
-
+        Log.i("repositorio" , repositorio.toString())
         pullRequestsViewModel.pullRequests.observe(this, pullRequestsObserver)
-        pullRequestsViewModel.getPullRequest(criador.toString(),repositorio.toString()+"/pulls")
+        pullRequestsViewModel.getPullRequest(repositorio.toString())
 
 
 

@@ -12,7 +12,7 @@ import com.example.helderrocha.githubchallenge.api.GitApi
 //class ImageUrlBuilder {
 //
 //    fun buildUrl(posterPath: String): String {
-//        return POSTER_URL + posterPath + "?api_key=" + GitApi
+//        return POSTER_URL + posterPath + GitApi
 //    }
 //
 ////    fun buildBackdropUrl(backdropPath: String): String {
