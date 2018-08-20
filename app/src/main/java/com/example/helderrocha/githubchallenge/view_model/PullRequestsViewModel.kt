@@ -5,23 +5,27 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.example.helderrocha.githubchallenge.api.ApiClient
+import com.example.helderrocha.githubchallenge.model.Items
 import com.example.helderrocha.githubchallenge.model.PullRequest
 import com.example.helderrocha.testeparaserinvolvido.SchedulerProvider
+import com.example.helderrocha.testeparaserinvolvido.data.Cache
 import javax.inject.Inject
 
 
 class PullRequestsViewModel @Inject constructor(val api: ApiClient, private val schedulers: SchedulerProvider) : ViewModel() {
-    var _pullRequests = MutableLiveData<List<PullRequest>>()
-    val pullRequests: LiveData<List<PullRequest>> = _pullRequests
+    val _pulls = MutableLiveData<List<PullRequest>>()
+    val pulls: LiveData<List<PullRequest>> = _pulls
+    fun getRepositories(repo: String) {
+        var repoKey = repo + "/pulls"
 
-    fun getPullRequest(repositorio: String) {
-        api.pullRequest(repositorio+"/pulls")
+        api.pullRequest(repoKey)
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.mainThread())
                 .subscribe({
-                    _pullRequests.value = it
+                    _pulls.value = it
                 }, {
-                    _pullRequests.value = listOf()
+                    _pulls.value = listOf()
                 })
     }
+
 }

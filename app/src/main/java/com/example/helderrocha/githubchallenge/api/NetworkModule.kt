@@ -1,5 +1,6 @@
 package com.example.helderrocha.githubchallenge.api
 
+import android.util.Log
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

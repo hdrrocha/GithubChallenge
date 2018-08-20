@@ -75,12 +75,9 @@ class RepositoriosActivity : AppCompatActivity() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if(dy > 0) {
-                    Log.i("Helder","Rolando" + page)
                     visibleItemCount = layoutManager.childCount
                     totalItemCount = layoutManager.itemCount
-                    Log.i("Helder","totalItemCount" + totalItemCount)
                     var total  = visibleItemCount+ pastVisibleItemCount
-                    Log.i("Helder","visibleItemCount+ pastVisibleItemCount" + total)
                     pastVisibleItemCount =(recyclerView!!.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                     if(loading){
                         if((visibleItemCount+ pastVisibleItemCount) >= totalItemCount) {
@@ -100,10 +97,14 @@ class RepositoriosActivity : AppCompatActivity() {
         })
     }
     private fun partItemClicked(item : Items) {
-//        criador: String, repositorio: String)
         val showDetailActivityIntent = Intent(this, PullRequestsActivity::class.java)
-        showDetailActivityIntent.putExtra("criador", item.owner.login)
-        showDetailActivityIntent.putExtra("repositorio", item.full_name)
+        val user: String  =  item.owner.login
+        Log.i("HELDER User +> ", user)
+        val repo :String = item.full_name
+        Log.i("HELDER +>  full_name", repo)
+        val link = "$repo"
+        Log.i("HELDER +> ", link)
+        showDetailActivityIntent.putExtra("link", link)
         startActivity(showDetailActivityIntent)
     }
 }

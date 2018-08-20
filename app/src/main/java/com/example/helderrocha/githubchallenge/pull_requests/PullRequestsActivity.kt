@@ -8,11 +8,13 @@ import android.util.Log
 import android.view.View
 
 import com.example.helderrocha.githubchallenge.R
+import com.example.helderrocha.githubchallenge.model.Items
 
 import com.example.helderrocha.githubchallenge.model.PullRequest
 import com.example.helderrocha.githubchallenge.pull_requests.adapter.PullRequestAdapter
 
 import com.example.helderrocha.githubchallenge.view_model.PullRequestsViewModel
+import com.example.helderrocha.githubchallenge.view_model.RepositoryViewModel
 
 import com.example.helderrocha.githubchallenge.view_model.ViewModelFactory
 import dagger.android.AndroidInjection
@@ -22,17 +24,13 @@ import javax.inject.Inject
 
 class PullRequestsActivity : AppCompatActivity() {
     @Inject
-    lateinit var pullRequestsVMFactory: ViewModelFactory<PullRequestsViewModel>
+    lateinit var itemsVMFactory: ViewModelFactory<PullRequestsViewModel>
 
-    private val pullRequestsViewModel by lazy {
-        ViewModelProviders.of(this, pullRequestsVMFactory)[PullRequestsViewModel::class.java]
+    private val itemsViewModel by lazy {
+        ViewModelProviders.of(this, itemsVMFactory)[PullRequestsViewModel::class.java]
     }
 
-//    protected val pullRequestsObserver = Observer<List<PullRequest>>(::onItemsFetched)
-    private val pullRequestsObserver  = Observer<List<PullRequest>>(::onItemsFetched)
-
-    private lateinit var adapter: PullRequestAdapter
-
+//    protected val ItemsObserver = Observer<List<PullRequest>>(::onItemsFetched)
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -40,27 +38,11 @@ class PullRequestsActivity : AppCompatActivity() {
 
         val data: Bundle = intent.extras
 
-        var criador = data.getSerializable("criador")
-        Log.i("criador" , criador.toString())
-        var repositorio = data.getSerializable("repositorio")
-        Log.i("repositorio" , repositorio.toString())
-        pullRequestsViewModel.pullRequests.observe(this, pullRequestsObserver)
-        pullRequestsViewModel.getPullRequest(repositorio.toString())
+        var link = data.getBundle("link")
 
 
-
+        Log.i("HELDER" , link.toString())
+    itemsViewModel.getRepositories(link.toString())
     }
 
-    private fun onItemsFetched(pullRequests: List<PullRequest>?) {
-        adapter = PullRequestAdapter(pullRequests!!, { pullRequest: PullRequest -> partItemClicked(pullRequest) } )
-        recyclerViewPullRequests.adapter = adapter
-        progressBarPullRequest.visibility = View.GONE
-
-    }
-
-    private fun partItemClicked(pullRequest : PullRequest) {
-//        val showDetailActivityIntent = Intent(this, DetailsActivity::class.java)
-//        showDetailActivityIntent.putExtra("movie_selected", movie.id)
-//        startApartItemClickedctivity(showDetailActivityIntent)
-    }
 }
