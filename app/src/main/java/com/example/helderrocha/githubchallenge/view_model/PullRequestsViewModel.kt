@@ -15,17 +15,17 @@ import javax.inject.Inject
 class PullRequestsViewModel @Inject constructor(val api: ApiClient, private val schedulers: SchedulerProvider) : ViewModel() {
     val _pulls = MutableLiveData<List<PullRequest>>()
     val pulls: LiveData<List<PullRequest>> = _pulls
-    fun getRepositories(repo: String) {
-        var repoKey = repo + "/pulls"
+    fun getRepositories(name: String, repositorio: String) {
 
-        api.pullRequest(repoKey)
+        api.pullRequest(name, repositorio)
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.mainThread())
                 .subscribe({
                     _pulls.value = it
                 }, {
                     _pulls.value = listOf()
+                    Log.e("Error", it.toString())
                 })
-    }
+     }
 
 }

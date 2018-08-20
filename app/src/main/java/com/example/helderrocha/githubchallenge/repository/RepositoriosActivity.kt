@@ -50,10 +50,13 @@ class RepositoriosActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
 
+
         itemsViewModel.repositories.observe(this, ItemsObserver)
         itemsViewModel.getRepositories(page)
 
     }
+
+
     
     private fun onItemsFetched(newItems: List<Items>?) {
         if (newItems != null) {
@@ -97,14 +100,24 @@ class RepositoriosActivity : AppCompatActivity() {
         })
     }
     private fun partItemClicked(item : Items) {
-        val showDetailActivityIntent = Intent(this, PullRequestsActivity::class.java)
-        val user: String  =  item.owner.login
-        Log.i("HELDER User +> ", user)
-        val repo :String = item.full_name
-        Log.i("HELDER +>  full_name", repo)
-        val link = "$repo"
-        Log.i("HELDER +> ", link)
-        showDetailActivityIntent.putExtra("link", link)
-        startActivity(showDetailActivityIntent)
+//        val showDetailActivityIntent = Intent(this, PullRequestsActivity::class.java)
+        val str1 = item.owner.login.toLowerCase()
+        val str2 = "/"
+        val str3 = item.name.toLowerCase()
+
+        // string interpolation
+        val link = "$str1$str2$str3"
+        Log.i("HLEDER=>", link)
+//        link =  sb.toString()
+//
+//        showDetailActivityIntent.putExtra("link", link)
+//        startActivity(showDetailActivityIntent)
+
+        val intent = Intent(this,PullRequestsActivity::class.java)
+        intent.putExtra("name",str1)
+        intent.putExtra("repo",str3)
+        startActivity(intent)
     }
 }
+
+

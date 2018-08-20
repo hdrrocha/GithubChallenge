@@ -25,6 +25,8 @@ abstract class AndroidInjectorsModule {
     abstract fun repositoriosActivity(): RepositoriosActivity
     @ContributesAndroidInjector
     abstract fun pullRequestsActivity(): PullRequestsActivity
+    @ContributesAndroidInjector
+    abstract fun mainActivity(): MainActivity
 
 }
 

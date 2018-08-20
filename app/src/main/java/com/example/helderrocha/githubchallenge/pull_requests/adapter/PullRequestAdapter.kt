@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.helderrocha.githubchallenge.R
 import com.example.helderrocha.githubchallenge.model.PullRequest
 import kotlinx.android.synthetic.main.pull_item.view.*
+import kotlinx.android.synthetic.main.repository_item.view.*
 
 class PullRequestAdapter (var pullRequests: List<PullRequest>, val clickListener: (PullRequest) -> Unit) : RecyclerView.Adapter<PullRequestAdapter.ViewHolder>() {
 
@@ -21,9 +23,8 @@ class PullRequestAdapter (var pullRequests: List<PullRequest>, val clickListener
 //            itemView.releaseDateTextView.text = movie.releaseDate
             itemView.setOnClickListener { clickListener(item)}
 //            Glide.with(itemView)
-//                    .load(movie.posterPath?.let { movieImageUrlBuilder.buildPosterUrl(it) })
-//                    .apply(RequestOptions().placeholder(R.drawable.ic_image_placeholder))
-//                    .into(itemView.posterImageView)
+//                    .load(item.user.avatar_url)
+//                    .into(itemView.pullUserAvatar)
         }
     }
 

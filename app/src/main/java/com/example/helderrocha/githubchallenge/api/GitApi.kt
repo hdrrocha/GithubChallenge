@@ -20,9 +20,11 @@ interface GitApi {
 
     @GET("search/repositories?q=language:Java&sort=stars&")
     fun repositoriesscroll(@Query("page") page: String): Observable<RepositoryResponse>
-
-    @GET("repos/{repositorio}")
+//    https://api.github.com/repos/<criador>/<repositório>/pulls
+//    @GET("/repos/{repositorio}/pulls/" )
+    @GET("/repos/{name}/{repo}/pulls" )
     fun pullRequest(
-            @Path("repositorio") repositorio: String):  Observable<List<PullRequest>>
+        @Path("name") name: String,
+        @Path("repo") repo: String): Observable<List<PullRequest>>
 
 }
